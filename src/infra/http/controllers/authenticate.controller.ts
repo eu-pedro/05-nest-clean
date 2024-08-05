@@ -6,6 +6,7 @@ import { ZodValidationPipe } from '../pipes/zod-validation-pipe'
 import { JwtService } from "@nestjs/jwt";
 import { AuthenticateStudentUseCase } from "@/domain/forum/application/use-cases/authenticate-student";
 import { WrongCredentialsError } from "@/domain/forum/application/use-cases/errors/wrong-credentials-error";
+import { Public } from "@/infra/auth/public";
 
 
 const authenticateBodySchema = z.object({
@@ -16,6 +17,7 @@ const authenticateBodySchema = z.object({
 type AuthenticateBodySchema = z.infer<typeof authenticateBodySchema>
 
 @Controller('/sessions')
+@Public()
 export class AuthenticateController {
 
  constructor(private authenticateStudent: AuthenticateStudentUseCase, private prisma: PrismaService){}
