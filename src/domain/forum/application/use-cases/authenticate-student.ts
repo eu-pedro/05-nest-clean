@@ -18,7 +18,7 @@ type AuthenticateUseCaseResponse = Either<
 >
 
 @Injectable()
-export class AuthenticateUseCase {
+export class AuthenticateStudentUseCase {
   constructor(private studentRepository: StudentsRepository, private hashComparer: HashComparer, private encrypter: Encrypter) { }
 
   async execute({
